@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Potko - All-in-One Video Downloader & HD Player</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body { background-color: #07090e; color: #f3f4f6; font-family: system-ui, -apple-system, sans-serif; scroll-behavior: smooth; }
+    .accent-gradient { background: linear-gradient(135deg, #FF2851 0%, #FF6584 100%); }
+    .glass-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.07); backdrop-filter: blur(16px); }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+  <!-- Navbar -->
+  <header class="w-full px-6 py-4 flex items-center justify-between border-b border-gray-800/80 sticky top-0 bg-[#07090e]/90 backdrop-blur z-50">
+    <div class="flex items-center space-x-3">
+      <div class="w-10 h-10 rounded-full accent-gradient flex items-center justify-center font-black text-xl text-white shadow-lg shadow-red-500/20">P</div>
+      <span class="text-2xl font-bold tracking-tight text-white">Potko</span>
+    </div>
+    <nav class="hidden md:flex space-x-6 text-sm text-gray-400">
+      <a href="#features" class="hover:text-white transition">Features</a>
+      <a href="#roadmap" class="hover:text-white transition">Roadmap</a>
+      <a href="#privacy" class="hover:text-white transition">Privacy Policy</a>
+    </nav>
+    <a href="#download" class="text-xs font-bold px-4 py-2 rounded-full accent-gradient text-white shadow-md">Get APK</a>
+  </header>
+
+  <!-- Hero & Download Section -->
+  <main class="max-w-4xl mx-auto px-6 pt-16 pb-12 text-center">
+    <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full glass-card text-xs text-gray-300 mb-6">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      <span>Official Release • No Account Needed • Zero Tracking</span>
+    </div>
+
+    <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight text-white">
+      High-Speed Streaming & <br>
+      <span class="text-transparent bg-clip-text accent-gradient">Universal Media Downloader</span>
+    </h1>
+
+    <p class="text-gray-400 text-base md:text-lg max-w-2xl mx-auto mb-10">
+      Download Instagram Reels, YouTube videos, and trending music directly to your phone storage in 1080p and crystal-clear MP3. Fast, free, and built for ultimate privacy.
+    </p>
+
+    <!-- Main Download Container -->
+    <div id="download" class="p-8 rounded-3xl glass-card max-w-lg mx-auto shadow-2xl relative overflow-hidden">
+      <div class="flex items-center justify-center space-x-4 mb-4">
+        <i class="fa-brands fa-android text-4xl text-emerald-400"></i>
+        <div class="text-left">
+          <h2 class="font-bold text-lg text-white">Potko for Android</h2>
+          <p id="apkVersion" class="text-xs text-gray-400">Fetching latest release...</p>
+        </div>
+      </div>
+
+      <a id="downloadBtn" href="#" class="w-full py-4 rounded-xl accent-gradient font-bold text-lg text-white flex items-center justify-center space-x-3 shadow-lg shadow-red-500/25 hover:opacity-95 transition transform active:scale-95">
+        <i class="fa-solid fa-download"></i>
+        <span>Download APK (Direct)</span>
+      </a>
+
+      <p class="text-[11px] text-gray-500 mt-4">
+        Requires Android 8.0+. Safe & verified APK file directly from source.
+      </p>
+    </div>
+
+    <!-- Features Section -->
+    <section id="features" class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20 text-left">
+      <div class="p-6 rounded-2xl glass-card">
+        <i class="fa-solid fa-bolt text-2xl text-red-400 mb-3"></i>
+        <h3 class="font-bold text-lg text-white mb-1">Instant Downloader</h3>
+        <p class="text-sm text-gray-400">Paste any link or tap the download button right from the feed to save media instantly.</p>
+      </div>
+      <div class="p-6 rounded-2xl glass-card">
+        <i class="fa-solid fa-music text-2xl text-pink-400 mb-3"></i>
+        <h3 class="font-bold text-lg text-white mb-1">HD Audio Extraction</h3>
+        <p class="text-sm text-gray-400">Turn any video or trending reel into a high-bitrate offline MP3 audio file with one click.</p>
+      </div>
+      <div class="p-6 rounded-2xl glass-card">
+        <i class="fa-solid fa-user-shield text-2xl text-cyan-400 mb-3"></i>
+        <h3 class="font-bold text-lg text-white mb-1">100% Guest Mode</h3>
+        <p class="text-sm text-gray-400">No email, no login, and no passwords required. Your downloads stay completely on your device.</p>
+      </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section id="roadmap" class="mt-20 text-left">
+      <h3 class="text-2xl font-bold text-white mb-6 text-center">Project Roadmap</h3>
+      <div class="space-y-4 max-w-2xl mx-auto">
+        <div class="p-4 rounded-xl glass-card flex items-start space-x-4">
+          <span class="px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-400 text-xs font-bold mt-0.5">COMPLETED</span>
+          <div>
+            <h4 class="font-semibold text-white">Phase 1: Architecture & 5-Tab UI</h4>
+            <p class="text-xs text-gray-400">Muka-style clean interface (Home, Music, Shorts, My Files, Me) with dual AMOLED/Light theme.</p>
+          </div>
+        </div>
+        <div class="p-4 rounded-xl glass-card flex items-start space-x-4">
+          <span class="px-2.5 py-1 rounded bg-amber-500/10 text-amber-400 text-xs font-bold mt-0.5">IN PROGRESS</span>
+          <div>
+            <h4 class="font-semibold text-white">Phase 2: Universal Parsing & Zero-Server Download Core</h4>
+            <p class="text-xs text-gray-400">Local stream grabber integration for YouTube, Instagram, and Facebook with hardware H.265 engine.</p>
+          </div>
+        </div>
+        <div class="p-4 rounded-xl glass-card flex items-start space-x-4">
+          <span class="px-2.5 py-1 rounded bg-gray-700 text-gray-300 text-xs font-bold mt-0.5">UPCOMING</span>
+          <div>
+            <h4 class="font-semibold text-white">Phase 3: Native Video Monetization</h4>
+            <p class="text-xs text-gray-400">AppLovin / Mintegral video card previews and non-intrusive download rewards.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Privacy Policy Section -->
+    <section id="privacy" class="mt-20 p-8 rounded-2xl glass-card text-left max-w-3xl mx-auto text-xs text-gray-400 leading-relaxed">
+      <h3 class="text-lg font-bold text-white mb-4">Privacy Policy</h3>
+      <p class="mb-3"><strong>Potko</strong> does not collect, store, or sell any personal data. The application operates in guest mode without mandatory account registration.</p>
+      <p class="mb-3"><strong>Storage Access:</strong> The app requests storage permissions strictly to save downloaded video and audio files directly to your device storage (DCIM / Download directory).</p>
+      <p><strong>Third-Party Content:</strong> All media streamed or parsed remains the property of their respective creators and hosting services. Potko acts solely as a client-side media browser and offline caching utility.</p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-6 border-t border-gray-800 text-center text-xs text-gray-500">
+    © 2026 Potko. All rights reserved.
+  </footer>
+
+  <!-- Script to Dynamically Pull APK from Public Repo Releases -->
+  <script>
+    // अपनी पब्लिक रिपॉज़िटरी का विवरण यहाँ डालें:
+    const REPO_OWNER = "YOUR_GITHUB_USERNAME"; 
+    const REPO_NAME = "potko-download"; // आपकी पब्लिक रिपॉज़िटरी
+
+    async function loadLatestRelease() {
+      const btn = document.getElementById('downloadBtn');
+      const verText = document.getElementById('apkVersion');
+      try {
+        const res = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/releases/latest`);
+        if (!res.ok) throw new Error();
+        const data = await res.json();
+        
+        const apk = data.assets.find(a => a.name.endsWith('.apk'));
+        if (apk) {
+          btn.href = apk.browser_download_url;
+          verText.innerText = `Latest: ${data.tag_name} (${(apk.size / (1024*1024)).toFixed(1)} MB)`;
+        } else {
+          fallback();
+        }
+      } catch (e) {
+        fallback();
+      }
+      function fallback() {
+        btn.href = `https://github.com/${REPO_OWNER}/${REPO_NAME}/releases`;
+        verText.innerText = "Download Latest Stable Build";
+      }
+    }
+    loadLatestRelease();
+  </script>
+</body>
+</html>
