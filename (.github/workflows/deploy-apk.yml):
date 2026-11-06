@@ -1,0 +1,42 @@
+name: Build and Push APK to Public Site
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Grant Execute Permission to gradlew
+        run: chmod +x gradlew
+
+      - name: Build Production APK
+        run: ./gradlew assembleRelease --no-daemon
+
+      - name: Locate & Prepare APK
+        run: |
+          APK_FILE=$(find app/build/outputs/apk/release -name "*.apk" | head -n 1)
+          cp $APK_FILE Potko-v1.0.${{ github.run_number }}.apk
+
+      - name: Push APK Release to Public Repository
+        uses: softprops/action-gh-release@v1
+        with:
+          repository: YOUR_GITHUB_USERNAME/potko-download  # आपकी पब्लिक रिपॉज़िटरी
+          token: ${{ secrets.POTKO_RELEASE_TOKEN }}
+          tag_name: v1.0.${{ github.run_number }}
+          name: "Potko Official v1.0.${{ github.run_number }}"
+          body: "Direct public build of Potko."
+          files: Potko-v1.0.${{ github.run_number }}.apk
