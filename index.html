@@ -2,167 +2,156 @@
 <html lang="hi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Potko - All-in-One Video Downloader & Player</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Potko - Universal Media Streamer & Player</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  
+  <!-- Apple iOS Native Fullscreen Settings -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Potko">
+  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/razabharatrv-lang/potko-download-/main/icon.png">
+  
   <style>
-    body { background-color: #000000; color: #FFFFFF; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    body { background-color: #000000; color: #FFFFFF; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
     .flat-card { background-color: #0D0D0D; border: 1px solid #222222; }
-    .flat-btn { background-color: #FF2851; color: #FFFFFF; }
-    .flat-btn:hover { background-color: #E02045; }
+    .flat-btn-primary { background-color: #FF2851; color: #FFFFFF; }
     .flat-border { border-color: #222222; }
   </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between">
 
-  <!-- Flat Navbar -->
-  <header class="w-full px-6 py-4 flex items-center justify-between border-b flat-border bg-black sticky top-0 z-50">
+  <!-- Header -->
+  <header class="w-full px-5 py-4 flex items-center justify-between border-b flat-border bg-black sticky top-0 z-50">
     <div class="flex items-center space-x-3">
-      <div class="w-9 h-9 rounded-md flat-btn flex items-center justify-center font-black text-lg">P</div>
+      <div class="w-9 h-9 rounded-md flat-btn-primary flex items-center justify-center font-black text-lg">P</div>
       <span class="text-xl font-bold tracking-tight">Potko</span>
     </div>
-    <nav class="hidden md:flex space-x-6 text-sm text-gray-400">
-      <a href="#features" class="hover:text-white transition">Features</a>
-      <a href="#roadmap" class="hover:text-white transition">Roadmap</a>
-      <a href="#privacy" class="hover:text-white transition">Privacy</a>
-    </nav>
-    <a href="#download" class="text-xs font-semibold px-4 py-2 rounded-md flat-btn">Get APK</a>
+    <div id="deviceBadge" class="text-xs px-2.5 py-1 rounded-md border flat-border text-gray-400">Detecting...</div>
   </header>
 
-  <!-- Hero Section -->
-  <main class="max-w-4xl mx-auto px-5 pt-14 pb-12 text-center">
+  <!-- Main Hero -->
+  <main class="max-w-md mx-auto px-5 pt-8 pb-10 text-center flex-1 w-full">
     
     <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-md flat-card text-xs text-gray-400 mb-6">
       <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-      <span>Official Release • No Account Required • Zero Tracking</span>
+      <span>Universal Direct Engine • Zero Friction</span>
     </div>
 
-    <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-4 text-white">
-      Universal Media Downloader & <br>
-      High-Definition Player
+    <h1 class="text-3xl font-extrabold tracking-tight mb-3">
+      Stream & Save Anything
     </h1>
-
-    <p class="text-gray-400 text-sm md:text-base max-w-xl mx-auto mb-8">
-      Instagram Reels, YouTube Videos, और Trending Music को सीधे अपने फ़ोन स्टोरेज में 1080p वीडियो और हाई-क्वालिटी MP3 में तेज़ी से सेव करें।
+    <p class="text-gray-400 text-xs mb-8">
+      Reels, Shorts, Video & MP3 Audio directly without annoying ads.
     </p>
 
-    <!-- Flat Download Box -->
-    <div id="download" class="p-6 rounded-lg flat-card max-w-md mx-auto text-left">
-      <div class="flex items-center space-x-4 mb-5">
-        <div class="w-12 h-12 rounded-md bg-zinc-900 border flat-border flex items-center justify-center text-emerald-400 text-2xl">
-          <i class="fa-brands fa-android"></i>
+    <!-- SMART ACTION CONTAINER (Switches based on Device) -->
+    <div id="actionContainer" class="p-6 rounded-lg flat-card text-left space-y-4">
+      
+      <!-- ANDROID VIEW -->
+      <div id="androidSection" class="space-y-4">
+        <div class="flex items-center space-x-3">
+          <i class="fa-brands fa-android text-2xl text-emerald-400"></i>
+          <div>
+            <h2 class="font-bold text-sm text-white">Potko for Android</h2>
+            <p id="apkSizeText" class="text-[11px] text-gray-500">Direct Native APK</p>
+          </div>
         </div>
-        <div>
-          <h2 class="font-bold text-base text-white">Potko for Android</h2>
-          <p id="apkVersion" class="text-xs text-gray-400 mt-0.5">Checking latest build...</p>
-        </div>
+        <a id="apkDownloadBtn" href="#" class="w-full py-3.5 rounded-md flat-btn-primary font-bold text-sm flex items-center justify-center space-x-2 transition active:scale-95 text-center">
+          <i class="fa-solid fa-download"></i>
+          <span>Download Android APK</span>
+        </a>
+        <p class="text-[10px] text-gray-500 text-center">One-click direct installation.</p>
       </div>
 
-      <a id="downloadBtn" href="#" class="w-full py-3.5 rounded-md flat-btn font-bold text-sm flex items-center justify-center space-x-2.5 transition active:scale-95 text-center">
-        <i class="fa-solid fa-download"></i>
-        <span>Download APK (Direct)</span>
-      </a>
+      <!-- APPLE IOS / MAC VIEW -->
+      <div id="appleSection" class="space-y-4 hidden">
+        <div class="flex items-center space-x-3">
+          <i class="fa-brands fa-apple text-2xl text-white"></i>
+          <div>
+            <h2 class="font-bold text-sm text-white">Potko for iPhone & Mac</h2>
+            <p class="text-[11px] text-gray-500">Official Web App (No App Store Needed)</p>
+          </div>
+        </div>
+        
+        <div class="bg-black p-3 rounded border flat-border text-xs text-gray-300 space-y-2">
+          <div class="flex items-center space-x-2">
+            <span class="w-4 h-4 rounded-full bg-zinc-800 text-[10px] font-bold flex items-center justify-center">1</span>
+            <span>Safari में नीचे <i class="fa-solid fa-arrow-up-from-bracket text-blue-400 mx-1"></i> (Share) बटन दबाएँ।</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <span class="w-4 h-4 rounded-full bg-zinc-800 text-[10px] font-bold flex items-center justify-center">2</span>
+            <span><strong>"Add to Home Screen"</strong> पर टैप करें।</span>
+          </div>
+        </div>
 
-      <p class="text-[11px] text-gray-500 mt-3 text-center">
-        Android 8.0+ supported. 100% direct package.
-      </p>
+        <p class="text-[10px] text-emerald-400 text-center">यह आपके iPhone पर बिना एड्रेस बार के सीधे ऐप बन जाएगा।</p>
+      </div>
+
     </div>
 
-    <!-- Flat Features Grid -->
-    <section id="features" class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-16 text-left">
-      <div class="p-5 rounded-lg flat-card">
-        <i class="fa-solid fa-bolt text-xl text-red-500 mb-2"></i>
-        <h3 class="font-bold text-sm text-white mb-1">Instant Media Grab</h3>
-        <p class="text-xs text-gray-400">लिंक पेस्ट करें या सीधे फ़ीड से 1-क्लिक में डाउनलोड करें।</p>
-      </div>
-      <div class="p-5 rounded-lg flat-card">
-        <i class="fa-solid fa-music text-xl text-pink-500 mb-2"></i>
-        <h3 class="font-bold text-sm text-white mb-1">Crystal Clear MP3</h3>
-        <p class="text-xs text-gray-400">किसी भी वीडियो को बिना रुकावट उच्च बिटरेट ऑडियो में निकालें।</p>
-      </div>
-      <div class="p-5 rounded-lg flat-card">
-        <i class="fa-solid fa-user-shield text-xl text-cyan-400 mb-2"></i>
-        <h3 class="font-bold text-sm text-white mb-1">Zero Friction</h3>
-        <p class="text-xs text-gray-400">बिना लॉगिन या पासवर्ड के सीधे ऐप खोलें और इस्तेमाल करें।</p>
-      </div>
-    </section>
-
-    <!-- Flat Roadmap -->
-    <section id="roadmap" class="mt-16 text-left">
-      <h3 class="text-xl font-bold text-white mb-4 text-center">Project Roadmap</h3>
-      <div class="space-y-3 max-w-xl mx-auto">
-        <div class="p-4 rounded-lg flat-card flex items-start space-x-3">
-          <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">DONE</span>
-          <div>
-            <h4 class="text-xs font-semibold text-white">5-Tab UI Architecture</h4>
-            <p class="text-[11px] text-gray-400 mt-0.5">Home, Music, Shorts, My Files और Me टैब्स का मॉडर्न कंपोज़ UI।</p>
-          </div>
-        </div>
-        <div class="p-4 rounded-lg flat-card flex items-start space-x-3">
-          <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">ACTIVE</span>
-          <div>
-            <h4 class="text-xs font-semibold text-white">Zero-Server Downloader Engine</h4>
-            <p class="text-[11px] text-gray-400 mt-0.5">सीधे डिवाइस स्टोरेज में मीडिया स्ट्रीम पार्सिंग और लोकल डाउनलोड।</p>
-          </div>
-        </div>
-        <div class="p-4 rounded-lg flat-card flex items-start space-x-3">
-          <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-zinc-800 text-gray-300">NEXT</span>
-          <div>
-            <h4 class="text-xs font-semibold text-white">Video Ad Monetization</h4>
-            <p class="text-[11px] text-gray-400 mt-0.5">फ़ीड के अंदर नेटिव वीडियो कार्ड ऐड्स और इंटरस्टीशियल रिवॉर्ड्स।</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Flat Privacy Policy -->
-    <section id="privacy" class="mt-16 p-6 rounded-lg flat-card text-left max-w-xl mx-auto text-xs text-gray-400 leading-relaxed">
-      <h3 class="text-sm font-bold text-white mb-2">Privacy Policy</h3>
-      <p class="mb-2"><strong>Potko</strong> किसी भी तरह का निजी डेटा, सर्च हिस्ट्री या पासवर्ड इकट्ठा नहीं करता। ऐप पूरी तरह गेस्ट मोड पर काम करता है।</p>
-      <p class="mb-2"><strong>Storage Permission:</strong> ऐप केवल आपके फ़ोन के 'Download' फ़ोल्डर में आपकी चुनी गई मीडिया फ़ाइल को सुरक्षित सेव करने के लिए स्टोरेज एक्सेस मांगता है।</p>
-      <p><strong>Content Ownership:</strong> सभी स्ट्रीम और मीडिया उनके संबंधित क्रिएटर्स और प्लेटफ़ॉर्म की बौद्धिक संपदा हैं।</p>
-    </section>
+    <!-- Toggle for manual selection if user wants to see other platform -->
+    <div class="mt-4 flex justify-center space-x-4 text-xs text-gray-500">
+      <button onclick="showPlatform('android')" class="hover:text-white">Android version</button>
+      <span>•</span>
+      <button onclick="showPlatform('apple')" class="hover:text-white">iPhone / iPad version</button>
+    </div>
 
   </main>
 
-  <!-- Flat Footer -->
-  <footer class="py-5 border-t flat-border text-center text-xs text-gray-600 bg-black">
-    © 2026 Potko. All rights reserved.
+  <footer class="py-4 border-t flat-border text-center text-xs text-gray-600 bg-black">
+    © 2026 Potko Engine. Universal Client.
   </footer>
 
-  <!-- Script to Link APK Directly from GitHub Releases -->
   <script>
     const REPO_OWNER = "razabharatrv-lang";
     const REPO_NAME = "potko-download-";
 
-    async function loadRelease() {
-      const btn = document.getElementById('downloadBtn');
-      const verText = document.getElementById('apkVersion');
+    const isApple = /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent) && !window.MSStream;
 
+    function showPlatform(type) {
+      if (type === 'apple') {
+        document.getElementById('appleSection').classList.remove('hidden');
+        document.getElementById('androidSection').classList.add('hidden');
+        document.getElementById('deviceBadge').innerText = "iOS / Apple";
+      } else {
+        document.getElementById('androidSection').classList.remove('hidden');
+        document.getElementById('appleSection').classList.add('hidden');
+        document.getElementById('deviceBadge').innerText = "Android Ready";
+      }
+    }
+
+    // Auto-detect on load
+    if (isApple) {
+      showPlatform('apple');
+    } else {
+      showPlatform('android');
+    }
+
+    // Fetch APK Release for Android
+    async function fetchLatestApk() {
+      const btn = document.getElementById('apkDownloadBtn');
+      const sizeText = document.getElementById('apkSizeText');
       try {
         const res = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/releases/latest`);
         if (!res.ok) throw new Error();
         const data = await res.json();
-
         const apk = data.assets.find(a => a.name.endsWith('.apk'));
         if (apk) {
           btn.href = apk.browser_download_url;
-          verText.innerText = `Latest: ${data.tag_name} (${(apk.size / (1024 * 1024)).toFixed(1)} MB)`;
+          sizeText.innerText = `Latest: ${data.tag_name} (${(apk.size / (1024*1024)).toFixed(1)} MB)`;
         } else {
           fallback();
         }
       } catch (e) {
         fallback();
       }
-
       function fallback() {
         btn.href = `https://github.com/${REPO_OWNER}/${REPO_NAME}/releases`;
-        verText.innerText = "Download Latest Build";
       }
     }
-    loadRelease();
+    fetchLatestApk();
   </script>
-
 </body>
 </html>
