@@ -3,35 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Potko - Universal Media Streamer & Player</title>
+  <title>Potko - Universal Downloader & Player</title>
+  
+  <!-- Tailwind CSS & FontAwesome Icons -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-  
-  <!-- Apple iOS Native Fullscreen Settings -->
+
+  <!-- iPhone (Apple iOS) PWA Standalone Mode -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Potko">
-  
+  <meta name="theme-color" content="#000000">
+
   <style>
-    body { background-color: #000000; color: #FFFFFF; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    .flat-card { background-color: #0D0D0D; border: 1px solid #222222; }
-    .flat-btn-primary { background-color: #FF2851; color: #FFFFFF; }
-    .flat-btn-primary:hover { background-color: #E02045; }
-    .flat-border { border-color: #222222; }
+    body { 
+      background-color: #000000; 
+      color: #FFFFFF; 
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+    }
+    .flat-card { 
+      background-color: #0D0D0D; 
+      border: 1px solid #222222; 
+    }
+    .flat-btn-primary { 
+      background-color: #FF2851; 
+      color: #FFFFFF; 
+    }
+    .flat-btn-primary:active { 
+      opacity: 0.85; 
+    }
+    .flat-border { 
+      border-color: #222222; 
+    }
   </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between">
 
-  <!-- Header -->
+  <!-- Top Header Navigation -->
   <header class="w-full px-5 py-4 flex items-center justify-between border-b flat-border bg-black sticky top-0 z-50">
     <div class="flex items-center space-x-3">
       <div class="w-9 h-9 rounded-md flat-btn-primary flex items-center justify-center font-black text-lg">P</div>
       <span class="text-xl font-bold tracking-tight">Potko</span>
     </div>
-    <div id="deviceBadge" class="text-xs px-2.5 py-1 rounded-md border flat-border text-gray-400">Universal Ready</div>
+    <div id="deviceBadge" class="text-xs px-2.5 py-1 rounded-md border flat-border text-gray-400">Universal</div>
   </header>
 
-  <!-- Main Hero -->
+  <!-- Main Showcase & Download Section -->
   <main class="max-w-md mx-auto px-5 pt-8 pb-10 text-center flex-1 w-full">
     
     <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-md flat-card text-xs text-gray-400 mb-6">
@@ -43,86 +60,100 @@
       Stream & Save Anything
     </h1>
     <p class="text-gray-400 text-xs mb-8">
-      Reels, Shorts, Video और MP3 Audio बिना रुकावट सीधे अपने डिवाइस पर पाएँ।
+      Reels, Shorts, Video और MP3 Audio बिना विज्ञापन सीधे अपने डिवाइस पर पाएँ।
     </p>
 
-    <!-- ACTION CARD -->
+    <!-- ACTION CARD CONTAINER -->
     <div class="p-6 rounded-lg flat-card text-left space-y-4">
       
-      <!-- ANDROID SECTION -->
+      <!-- 1. ANDROID DOWNLOAD SECTION -->
       <div id="androidSection" class="space-y-4">
         <div class="flex items-center space-x-3">
-          <i class="fa-brands fa-android text-2xl text-emerald-400"></i>
+          <i class="fa-brands fa-android text-3xl text-emerald-400"></i>
           <div>
             <h2 class="font-bold text-sm text-white">Potko for Android</h2>
-            <p id="apkStatusText" class="text-[11px] text-gray-500">Direct Native APK (Latest Build)</p>
+            <p class="text-[11px] text-gray-500">Direct Native APK (Official Build)</p>
           </div>
         </div>
         
-        <a id="apkDownloadBtn" 
-           href="https://github.com/razabharatrv-lang/potko-download-/releases/latest/download/Potko-Universal-v1.0.apk" 
+        <!-- Direct Relative Link (No GitHub Page / No 404 Error) -->
+        <a href="./downloads/Potko.apk" 
+           download="Potko.apk"
            class="w-full py-3.5 rounded-md flat-btn-primary font-bold text-sm flex items-center justify-center space-x-2 transition active:scale-95 text-center">
           <i class="fa-solid fa-download"></i>
           <span>Download Android APK</span>
         </a>
-        <p class="text-[10px] text-gray-500 text-center">क्लिक करते ही डायरेक्ट APK डाउनलोड शुरू हो जाएगा।</p>
+        <p class="text-[10px] text-gray-500 text-center">क्लिक करते ही फ़ाइल सीधे फ़ोन स्टोरेज में डाउनलोड होगी।</p>
       </div>
 
-      <!-- APPLE IOS / IPHONE SECTION -->
+      <!-- 2. APPLE IPHONE / IPAD SECTION -->
       <div id="appleSection" class="space-y-4 hidden">
         <div class="flex items-center space-x-3">
-          <i class="fa-brands fa-apple text-2xl text-white"></i>
+          <i class="fa-brands fa-apple text-3xl text-white"></i>
           <div>
             <h2 class="font-bold text-sm text-white">Potko for iPhone & iPad</h2>
             <p class="text-[11px] text-gray-500">Official Web App (No App Store Needed)</p>
           </div>
         </div>
         
-        <div class="bg-black p-3.5 rounded border flat-border text-xs text-gray-300 space-y-2.5">
-          <div class="flex items-center space-x-2">
-            <span class="w-5 h-5 rounded-full bg-zinc-800 text-[10px] font-bold flex items-center justify-center">1</span>
-            <span>Safari ब्राउज़र में नीचे <i class="fa-solid fa-arrow-up-from-bracket text-blue-400 mx-1"></i> (Share) बटन दबाएँ।</span>
+        <div class="bg-black p-4 rounded border flat-border text-xs text-gray-300 space-y-3">
+          <p class="text-zinc-400 font-semibold">अपने iPhone पर ऐप जोड़ने का तरीका:</p>
+          <div class="flex items-center space-x-3">
+            <span class="w-6 h-6 rounded-full bg-zinc-800 text-[11px] font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span>Safari ब्राउज़र में नीचे शेयर बटन <i class="fa-solid fa-arrow-up-from-bracket text-blue-400 mx-1"></i> दबाएँ।</span>
           </div>
-          <div class="flex items-center space-x-2">
-            <span class="w-5 h-5 rounded-full bg-zinc-800 text-[10px] font-bold flex items-center justify-center">2</span>
-            <span>सूची में से <strong>"Add to Home Screen"</strong> पर टैप करें।</span>
+          <div class="flex items-center space-x-3">
+            <span class="w-6 h-6 rounded-full bg-zinc-800 text-[11px] font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span>सूची में <strong>"Add to Home Screen"</strong> (<i class="fa-regular fa-square-plus text-gray-300 mx-1"></i>) पर टैप करें।</span>
           </div>
         </div>
 
-        <p class="text-[10px] text-emerald-400 text-center">यह आपके iPhone पर बिना ब्राउज़र बार के फुल-स्क्रीन ऐप की तरह चलेगा।</p>
+        <p class="text-[11px] text-emerald-400 text-center font-medium">यह iPhone पर बिना ब्राउज़र बार के फुल-स्क्रीन ओरिजिनल ऐप की तरह चलेगा।</p>
       </div>
 
     </div>
 
-    <!-- Manual Platform Switcher -->
-    <div class="mt-5 flex justify-center space-x-4 text-xs text-gray-500">
-      <button onclick="switchPlatform('android')" class="hover:text-white transition">Android Version</button>
+    <!-- Manual Platform Switch Tabs -->
+    <div class="mt-6 flex justify-center space-x-4 text-xs text-gray-500">
+      <button onclick="switchPlatform('android')" id="btnTabAndroid" class="text-white font-bold transition">Android Version</button>
       <span>•</span>
-      <button onclick="switchPlatform('apple')" class="hover:text-white transition">iPhone / iPad Version</button>
+      <button onclick="switchPlatform('apple')" id="btnTabApple" class="hover:text-white transition">iPhone / iPad Version</button>
     </div>
 
   </main>
 
+  <!-- Footer -->
   <footer class="py-4 border-t flat-border text-center text-xs text-gray-600 bg-black">
     © 2026 Potko Engine. Universal Release.
   </footer>
 
   <script>
-    const isApple = /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent) && !window.MSStream;
+    // Auto-detect Apple iOS vs Android
+    const isAppleDevice = /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent) && !window.MSStream;
 
     function switchPlatform(type) {
+      const androidSec = document.getElementById('androidSection');
+      const appleSec = document.getElementById('appleSection');
+      const badge = document.getElementById('deviceBadge');
+      const btnAndroid = document.getElementById('btnTabAndroid');
+      const btnApple = document.getElementById('btnTabApple');
+
       if (type === 'apple') {
-        document.getElementById('appleSection').classList.remove('hidden');
-        document.getElementById('androidSection').classList.add('hidden');
-        document.getElementById('deviceBadge').innerText = "Apple iOS";
+        appleSec.classList.remove('hidden');
+        androidSec.classList.add('hidden');
+        badge.innerText = "Apple iOS";
+        btnApple.className = "text-white font-bold transition";
+        btnAndroid.className = "text-gray-500 hover:text-white transition";
       } else {
-        document.getElementById('androidSection').classList.remove('hidden');
-        document.getElementById('appleSection').classList.add('hidden');
-        document.getElementById('deviceBadge').innerText = "Android";
+        androidSec.classList.remove('hidden');
+        appleSec.classList.add('hidden');
+        badge.innerText = "Android Ready";
+        btnAndroid.className = "text-white font-bold transition";
+        btnApple.className = "text-gray-500 hover:text-white transition";
       }
     }
 
-    if (isApple) {
+    if (isAppleDevice) {
       switchPlatform('apple');
     } else {
       switchPlatform('android');
